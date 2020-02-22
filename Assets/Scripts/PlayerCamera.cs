@@ -8,12 +8,15 @@ public class PlayerCamera : MonoBehaviour
     Vector2 smoothV;
     public float sensitivity = 5.0f;
     public float smoothing = 2.0f;
+    public float PickUpDampeningTime = 1.0f;
 
     public GameObject player;
     public LayerMask layer;
 
     public PickupAbleItem heldItem = null;
 
+    [SerializeField]
+    private float TimeSinceLastPickup = 0;
     // Use this for initialization
     void Start()
     {
@@ -35,23 +38,28 @@ public class PlayerCamera : MonoBehaviour
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
         player.transform.rotation = Quaternion.AngleAxis(mouseLook.x, player.transform.up);
 
+        TimeSinceLastPickup += Time.deltaTime;
         //Does the Pickup and Drop System
-        if (Input.GetKeyDown(KeyCode.E) && heldItem == null)
-        {
-            Physics.Raycast(this.transform.position, this.transform.forward, out RaycastHit hit, 10.0f, layer);
-            if (hit.collider != null)
+        if (TimeSinceLastPickup > PickUpDampeningTime && Input.GetKeyDown(KeyCode.E)) {
+            if (heldItem == null)
             {
-                PickupAbleItem item = hit.collider.gameObject.GetComponent<PickupAbleItem>();
-                if (item != null)
+                Physics.Raycast(this.transform.position, this.transform.forward, out RaycastHit hit, 10.0f, layer);
+                if (hit.collider != null)
                 {
-                    heldItem = item;
-                    heldItem.OnPickUp();
+                    PickupAbleItem item = hit.collider.gameObject.GetComponent<PickupAbleItem>();
+                    if (item != null)
+                    {
+                        heldItem = item;
+                        heldItem.OnPickUp();
+                    }
                 }
             }
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            heldItem.OnDrop();
+            else
+            {
+                heldItem.OnDrop();
+                heldItem = null;
+            }
+            TimeSinceLastPickup = 0;
         }
 
         if (Input.GetMouseButtonDown(0) && heldItem != null)
