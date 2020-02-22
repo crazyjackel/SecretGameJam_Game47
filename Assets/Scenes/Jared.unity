@@ -295,7 +295,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 5
   smoothing: 2
+  PickUpDampeningTime: 1
   player: {fileID: 698223359}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
+  heldItem: {fileID: 0}
+  TimeSinceLastPickup: 0
 --- !u!1 &548376618
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbb3b9ccbea2744e964b8a1afe41e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aPressed: 0
+  tPressed: 0
 --- !u!4 &653606585
 Transform:
   m_ObjectHideFlags: 0
@@ -669,7 +677,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: REDACTED
+  m_Text: REDaCtED
 --- !u!222 &818996127
 CanvasRenderer:
   m_ObjectHideFlags: 0
