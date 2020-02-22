@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private float currentSpeed;
     public LayerMask groundMask;
+    public bool hasDoubleJump = true;
     public Vector3 Velocity
     {
         get
@@ -41,17 +42,23 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
 
 
-        if (IsGrounded && Input.GetKeyDown(KeyCode.Space))
+        if ((IsGrounded && Input.GetKeyDown(KeyCode.Space)) || (!IsGrounded && hasDoubleJump && Input.GetKeyDown(KeyCode.Q)))
         {
             rb.AddForce(Vector3.up * JumpSpeed);
+            hasDoubleJump = false;
         }
+
+
         if (IsGrounded)
         {
-            currentSpeed = Mathf.Lerp(currentSpeed, MoveSpeed, 5*Time.deltaTime);
+            currentSpeed = Mathf.Lerp(currentSpeed, MoveSpeed, 5 * Time.deltaTime);
+            hasDoubleJump = true;
         }
         else
         {
             currentSpeed = Mathf.Lerp(currentSpeed, AirMoveSpeed, Time.deltaTime);
         }
+
+
     }
 }

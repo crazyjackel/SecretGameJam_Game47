@@ -9,6 +9,7 @@ public abstract class PickupAbleItem : MonoBehaviour
     public Vector3 Scale;
 
     private Vector3 origScale;
+    
     public virtual void OnPickUp()
     {
         Debug.Log("Pickup");
