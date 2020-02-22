@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class invisible_Walls : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] platforms;
 
     [SerializeField]
     private Material clear;
 
     [SerializeField]
-    private Material green;
+    private Material opaque;
 
+    [SerializeField]
     private float timer = 0;
 
     // Start is called before the first frame update
@@ -24,8 +23,8 @@ public class invisible_Walls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime/10;
-        if (this.GetComponent<MeshRenderer>().material == green && timer > 4 )
+        timer += Time.deltaTime/2;
+        if (timer > 4)
         {
             this.GetComponent<MeshRenderer>().material = clear;
             timer = 0;
@@ -35,7 +34,7 @@ public class invisible_Walls : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        this.GetComponent<MeshRenderer>().material = green;
+        this.GetComponent<MeshRenderer>().material = opaque;
     }
 
 
