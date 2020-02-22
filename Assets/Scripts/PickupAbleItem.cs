@@ -4,9 +4,7 @@ using UnityEngine;
 
 public abstract class PickupAbleItem : MonoBehaviour
 {
-    public Vector3 Offset;
-    public Vector3 Rotation;
-    public Vector3 Scale;
+    public Vector3 Offset, Rotation, Scale;
 
     private Vector3 origScale;
     
