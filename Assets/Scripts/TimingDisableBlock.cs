@@ -8,15 +8,5 @@ public class TimingDisableBlock : MonoBehaviour
     {
         TimingBlockManager.GetInstance().AddTimingBlock(this);
     }
-    bool previous;
-    void Update()
-    {
-        if (previous != GameManager.GetInstance().movement.IsGrounded)
-        {
-            this.enabled = !this.enabled;
-        }
-                
-        previous = GameManager.GetInstance().movement.IsGrounded;
-
-    }
+    
 }
