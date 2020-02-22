@@ -13,12 +13,15 @@ public class invisible_platforms : MonoBehaviour
     [SerializeField]
     private Material green;
 
+    [SerializeField]
+    private Material blue;
+
     // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < platforms.Length; i++)
         {
-            if (i % 2 == 0)
+            if (i % 2 == 1)
             {
                 platforms[i].GetComponent<MeshRenderer>().material = clear;
             }
@@ -28,7 +31,7 @@ public class invisible_platforms : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetMouseButtonDown(1))
         {
             for (int i = 0; i < platforms.Length; i++)
             {
@@ -42,7 +45,7 @@ public class invisible_platforms : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Y))
+        else if (Input.GetMouseButtonDown(2))
         {
             for (int i = 0; i < platforms.Length; i++)
             {
@@ -52,7 +55,7 @@ public class invisible_platforms : MonoBehaviour
                 }
                 else
                 {
-                    platforms[i].GetComponent<MeshRenderer>().material = green;
+                    platforms[i].GetComponent<MeshRenderer>().material = blue;
                 }
             }
         }
