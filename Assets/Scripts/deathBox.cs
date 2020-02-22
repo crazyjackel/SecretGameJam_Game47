@@ -18,6 +18,6 @@ public class deathBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.transform.position = new Vector3()
+        other.gameObject.transform.position = Vector3.zero;
     }
 }
