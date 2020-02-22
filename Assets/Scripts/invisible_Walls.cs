@@ -26,17 +26,12 @@ public class invisible_Walls : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-            this.GetComponent<MeshRenderer>().material = green;
-
+        this.GetComponent<MeshRenderer>().material = green;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if(collision.gameObject.tag == "player")
-        {
-            this.GetComponent<MeshRenderer>().material = green;
-        }
+        this.GetComponent<MeshRenderer>().material = clear;
     }
 
 
