@@ -34,11 +34,21 @@ public abstract class PickupAbleItem : MonoBehaviour
 
     }
 
+    public virtual void OnClickHeld()
+    {
+
+    }
+
+    public virtual void OnClickRelease()
+    {
+
+    }
+
     public virtual void OnDrop()
     {
         Debug.Log("Drop");
         this.transform.parent = null;
-        this.transform.position = GameManager.GetInstance().PlayerCamera.transform.position + GameManager.GetInstance().PlayerCamera.transform.forward + GameManager.GetInstance().PlayerCamera.transform.right;
+        this.transform.position = GameManager.GetInstance().MainCamera.transform.position + GameManager.GetInstance().MainCamera.transform.forward + GameManager.GetInstance().MainCamera.transform.right;
 
         this.transform.localScale = origScale;
 
@@ -47,7 +57,7 @@ public abstract class PickupAbleItem : MonoBehaviour
         {
             rb.detectCollisions = true;
             rb.useGravity = true;
-            rb.velocity = 2*GameManager.GetInstance().PlayerCamera.transform.forward + GameManager.GetInstance().Player.GetComponent<PlayerMovement>().Velocity;
+            rb.velocity = 2*GameManager.GetInstance().MainCamera.transform.forward + GameManager.GetInstance().Player.GetComponent<PlayerMovement>().Velocity;
             rb.freezeRotation = false;
         }
     }

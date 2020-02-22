@@ -161,7 +161,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48762658}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 96ca38d958c2449448546401a7102849, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -492,8 +492,17 @@ MonoBehaviour:
   rb: {fileID: 338701166}
   MoveSpeed: 5.5
   AirMoveSpeed: 3
-  JumpSpeed: 275
+  JumpSpeed: 300
   currentSpeed: 0
+  Velocities:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 55
@@ -1708,7 +1717,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628258425}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 96ca38d958c2449448546401a7102849, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2295,7 +2304,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864667068}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 96ca38d958c2449448546401a7102849, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4031,7 +4040,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978217435}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 96ca38d958c2449448546401a7102849, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4205,7 +4214,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 338701165}
-  PlayerCamera: {fileID: 378089463}
+  MainCamera: {fileID: 378089463}
+  movement: {fileID: 338701169}
+  PlayerCamera: {fileID: 378089464}
 --- !u!4 &2010380090
 Transform:
   m_ObjectHideFlags: 0
@@ -4260,7 +4271,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019118634}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 96ca38d958c2449448546401a7102849, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4324,8 +4335,8 @@ GameObject:
   - component: {fileID: 2031973771}
   - component: {fileID: 2031973770}
   - component: {fileID: 2031973769}
-  - component: {fileID: 2031973768}
   - component: {fileID: 2031973773}
+  - component: {fileID: 2031973768}
   m_Layer: 0
   m_Name: Crowbar
   m_TagString: Untagged
@@ -4342,12 +4353,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2031973767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1775bf569b735754ea375d08c7a5afa0, type: 3}
+  m_Script: {fileID: 11500000, guid: 487d5e5c890f9f941951ebb00b621678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Offset: {x: 0, y: 0, z: 0}
   Rotation: {x: 0, y: 0, z: 0}
   Scale: {x: 1, y: 1, z: 1}
+  cooldown: 3
+  inhitor: 20
+  VelocityScalar: 0
 --- !u!65 &2031973769
 BoxCollider:
   m_ObjectHideFlags: 0
