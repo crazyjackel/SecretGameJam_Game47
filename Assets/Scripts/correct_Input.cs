@@ -39,7 +39,7 @@ public class correct_Input : MonoBehaviour
 
         if(aPressed & tPressed)
         {
-            SceneManager.LoadScene("platform test");
+            SceneManager.LoadScene("Main");
         }
     }
 }
