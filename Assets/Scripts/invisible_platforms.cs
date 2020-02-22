@@ -31,7 +31,7 @@ public class invisible_platforms : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             for (int i = 0; i < platforms.Length; i++)
             {
@@ -45,7 +45,7 @@ public class invisible_platforms : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetMouseButtonDown(2))
+        else if (Input.GetMouseButtonDown(1))
         {
             for (int i = 0; i < platforms.Length; i++)
             {
