@@ -7,8 +7,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     public CapsuleCollider capsule;
     public Rigidbody rb;
-    public float MoveSpeed, JumpSpeed;
+    public float MoveSpeed, AirMoveSpeed, JumpSpeed;
     private Vector3 velocity;
+    private float currentSpeed;
     public LayerMask groundMask;
     public Vector3 Velocity
     {
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     {
         get
         {
-            return Physics.Raycast(this.transform.position, Vector3.down, 12f, groundMask);
+            return Physics.Raycast(this.transform.position, Vector3.down, 1.55f, groundMask);
         }
     }
     void Start()
@@ -35,14 +36,22 @@ public class PlayerMovement : MonoBehaviour
     {
         float XAxis = Input.GetAxis("Vertical");
         float YAxis = Input.GetAxis("Horizontal");
-        velocity = (XAxis * MoveSpeed * transform.forward) + (YAxis * MoveSpeed * transform.right);
+        velocity = (XAxis * transform.forward) + (YAxis * transform.right);
+        velocity *= currentSpeed;
         rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
 
-        Debug.DrawLine(capsule.center, Vector3.down);
 
-        if (IsGrounded && Input.GetKey(KeyCode.Space))
+        if (IsGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector3.up * JumpSpeed);
+        }
+        if (IsGrounded)
+        {
+            currentSpeed = Mathf.Lerp(currentSpeed, MoveSpeed, 5*Time.deltaTime);
+        }
+        else
+        {
+            currentSpeed = Mathf.Lerp(currentSpeed, AirMoveSpeed, Time.deltaTime);
         }
     }
 }

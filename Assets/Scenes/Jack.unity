@@ -229,10 +229,11 @@ MonoBehaviour:
   capsule: {fileID: 338701167}
   rb: {fileID: 338701166}
   MoveSpeed: 5
-  JumpSpeed: 20
+  AirMoveSpeed: 3
+  JumpSpeed: 250
   groundMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4294967295
 --- !u!1 &378089460
 GameObject:
   m_ObjectHideFlags: 0
