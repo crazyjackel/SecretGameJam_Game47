@@ -279,6 +279,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  hasDoubleJump: 1
 --- !u!1 &378089460
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +733,7 @@ GameObject:
   - component: {fileID: 2031973768}
   - component: {fileID: 2031973773}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Crowbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
