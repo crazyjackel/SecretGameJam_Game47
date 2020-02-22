@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FlameThrower : PickupAbleItem
 {
+    public ParticleSystem flame;
     public float cooldown = 3.0f;
     public float inhitor = 17.0f;
     private float timeSinceClick = 0.0f;
@@ -11,8 +12,14 @@ public class FlameThrower : PickupAbleItem
     [SerializeField]
     private float VelocityScalar = 0.0f;
     private bool doThrower =false;
+
+    public void Start()
+    {
+        flame.Stop();
+    }
     public override void OnClick()
     {
+        flame.Play();
         if (timeSinceClick >= cooldown)
         {
             VelocityScalar = 6.0f;
@@ -21,12 +28,14 @@ public class FlameThrower : PickupAbleItem
     }
     public override void OnClickHeld()
     {
+
         Debug.Log("Held");
         doThrower = true;
     }
 
     public override void OnClickRelease()
     {
+        flame.Stop();
         Debug.Log("Released");
         doThrower = false;
     }
