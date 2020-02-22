@@ -13,6 +13,8 @@ public class invisible_Walls : MonoBehaviour
     [SerializeField]
     private Material green;
 
+    private float timer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,13 @@ public class invisible_Walls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime/10;
+        if (this.GetComponent<MeshRenderer>().material == green && timer > 4 )
+        {
+            this.GetComponent<MeshRenderer>().material = clear;
+            timer = 0;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,10 +38,6 @@ public class invisible_Walls : MonoBehaviour
         this.GetComponent<MeshRenderer>().material = green;
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        this.GetComponent<MeshRenderer>().material = clear;
-    }
 
 
 }
