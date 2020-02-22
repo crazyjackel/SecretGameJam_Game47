@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    Vector2 mouseLook;
-    Vector2 smoothV;
-    public float sensitivity = 5.0f;
-    public float smoothing = 2.0f;
-    public float PickUpDampeningTime = 1.0f;
+    Vector2 mouseLook, smoothV;
+    public float sensitivity = 5.0f, smoothing = 2.0f, PickUpDampeningTime = 1.0f;
 
     public GameObject player;
     public LayerMask layer;
@@ -17,6 +14,7 @@ public class PlayerCamera : MonoBehaviour
 
     [SerializeField]
     private float TimeSinceLastPickup = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -40,7 +38,8 @@ public class PlayerCamera : MonoBehaviour
 
         TimeSinceLastPickup += Time.deltaTime;
         //Does the Pickup and Drop System
-        if (TimeSinceLastPickup > PickUpDampeningTime && Input.GetKeyDown(KeyCode.E)) {
+        if (TimeSinceLastPickup > PickUpDampeningTime && Input.GetKeyDown(KeyCode.E))
+        {
             if (heldItem == null)
             {
                 Physics.Raycast(this.transform.position, this.transform.forward, out RaycastHit hit, 10.0f, layer);
