@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     public float MoveSpeed, AirMoveSpeed, JumpSpeed, currentSpeed;
     private Vector3 velocity, pushVelocity = Vector3.zero;
+
+
+    public Vector3[] Velocities = new Vector3[8];
+
     public LayerMask groundMask;
     public bool hasDoubleJump = true;
     public Vector3 Velocity
@@ -62,7 +66,10 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = Mathf.Lerp(currentSpeed, AirMoveSpeed, Time.deltaTime);
         }
 
-
+        foreach(Vector3 velocity in Velocities)
+        {
+            if(velocity != null) rb.velocity += velocity;
+        }
     }
 
 

@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject Player;
-    public Camera PlayerCamera;
+    public Camera MainCamera;
+    public PlayerMovement movement;
+    public PlayerCamera PlayerCamera;
 
     private static GameManager Instance = null;
 

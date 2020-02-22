@@ -65,5 +65,15 @@ public class PlayerCamera : MonoBehaviour
         {
             heldItem.OnClick();
         }
+
+        if(Input.GetMouseButton(0) && heldItem != null)
+        {
+            heldItem.OnClickHeld();
+        }
+
+        if(Input.GetMouseButtonUp(0) && heldItem != null)
+        {
+            heldItem.OnClickRelease();
+        }
     }
 }
